@@ -92,6 +92,3 @@ def normalise_input(user_input):
     no_punct = filter_words(no_punct, skip_words)
 
     return no_punct
-
-
-print(normalise_input("go south"))

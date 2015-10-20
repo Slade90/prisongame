@@ -230,6 +230,10 @@ def print_menu(exits, room_items, inv_items):
         if items["id"] == "map":
             print("SHOW your map")
 
+    for items in inv_items:
+        if items["id"] == "coffee":
+            print("GIVE your coffee")
+
         
     #total_mass = 0
     #for items in inventory:
@@ -271,8 +275,10 @@ def execute_go(direction):
     #for items in inventory:
     #    total_mass += items["mass"]
     #if total_mass <= 3:
+
+    global current_room
     if direction in current_room["exits"]:
-        global current_room
+        
         current_room = move(current_room["exits"], direction)
         return current_room
     else:
@@ -286,6 +292,12 @@ def execute_show_map(inv_items):
     for item in inventory:
         if item["id"] == "map":
             map_print()
+
+def execute_give(inv_items):
+    coffee()
+    for item in inventory:
+        if item["id"] == "coffee":
+            print("would give coffee")
         
     
 
@@ -374,7 +386,19 @@ def execute_command(command):
         if len(command) > 1:
             execute_show_map(command[1])
         else:
-            print("Do what?")
+            print("Show what?")
+            
+    elif command[0] == "give":
+        if len(command) > 1:
+            execute_give(command[1])
+        else:
+            print("Give what?")
+
+    elif command[0] == "use":
+        if len(command) > 1:
+            execute_use(command[1])
+        else:
+            print("Use what?")
 
     else:
         print("This makes no sense.")
@@ -441,6 +465,19 @@ def got_map():
     else:
         has_map = False
         return False
+
+def got_money():
+    has_money = False
+    if item_lunch_money in inventory:
+        has_money = True
+        return has_money
+    else:
+        has_money = False
+        return False
+
+def got_flashlight():
+    has_flashlight = False
+    
     
 # This is the entry point of our program
 def main():
