@@ -3,6 +3,7 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+from mapitem import map_print
 import sys
 
 
@@ -134,7 +135,6 @@ def print_room(room):
     """
     # Display room name
     has_coffee = coffee()
-    print (has_coffee)
     if has_coffee == True:
         print()
         print(room["name"].upper())
@@ -225,6 +225,11 @@ def print_menu(exits, room_items, inv_items):
 
     for items in inv_items:
         print("DROP " + items["id"].upper() + " to drop your " + items["name"])
+
+    for items in inv_items:
+        if items["id"] == "map":
+            print("SHOW your map")
+
         
     #total_mass = 0
     #for items in inventory:
@@ -276,8 +281,13 @@ def execute_go(direction):
         #print("You are carrying too much, please drop some items.")
 
     
-    
+def execute_show_map(inv_items):
+    got_map()
+    for item in inventory:
+        if item["id"] == "map":
+            map_print()
         
+    
 
 
 def execute_take(item_id):
@@ -360,6 +370,12 @@ def execute_command(command):
         else:
             print("Drop what?")
 
+    elif command[0] == "show":
+        if len(command) > 1:
+            execute_show_map(command[1])
+        else:
+            print("Do what?")
+
     else:
         print("This makes no sense.")
 
@@ -416,8 +432,16 @@ def coffee():
     else:
         has_coffee = False
         return False
-    
 
+def got_map():
+    has_map = False
+    if item_map in inventory:
+        has_map = True
+        return has_map
+    else:
+        has_map = False
+        return False
+    
 # This is the entry point of our program
 def main():
     # Main game loop

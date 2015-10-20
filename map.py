@@ -1,3 +1,5 @@
+from items import *
+
 room_matts_office = {
     "name": "Matts Office",
     
@@ -5,7 +7,7 @@ room_matts_office = {
     """a""",
 
     "coffee_description":
-    """123""", 
+    """a""", 
 
     "exits": {"south": "Hallway"},
 
@@ -39,7 +41,7 @@ room_staff_room = {
 
     "exits": {"south": "Hallway"},
 
-    "items": []
+    "items": [item_coffee]
 
 }
 
@@ -84,7 +86,7 @@ room_cell_b = {
 
     "exits": {"south": "Main cell"},
 
-    "items": []
+    "items": [item_lunch_money]
 }
 
 room_cell_c = {
@@ -98,7 +100,7 @@ room_cell_c = {
 
     "exits": {"north": "Main cell"},
 
-    "items": []
+    "items": [item_map]
 }
 
 

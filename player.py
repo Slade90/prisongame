@@ -3,4 +3,4 @@ from items import *
 
 current_room = rooms["Reception"]
 
-inventory = [item_soap, item_coffee, item_map]
+inventory = [item_soap, item_coffee]
