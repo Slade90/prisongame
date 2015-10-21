@@ -128,7 +128,7 @@ room_cell_main = {
     "coffee_description":
     """123""",
 
-    "exits": {"south": "Yard", "northwest": "Cell A", "north": "Cell B", "southwest": "Cell D", "southeast": "Cell C", "east": "Toilets", "west": "Visiting"},
+    "exits": {"south": "Yard", "northwest": "Cell A", "north": "Cell B", "southwest": "Cell D", "southeast": "Cell C", "east": "Toilets", "west": "Visiting", "northeast": "Library"},
 
     "items": []
 

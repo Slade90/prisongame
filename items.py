@@ -8,7 +8,7 @@ item_soap = {
 item_coffee = {
     "id": "coffee",
     "name": "coffee",
-    "description": "a cup of hot coffee"
+    "description": "a cup of hot coffee."
 }
 
 item_map = {
@@ -20,11 +20,17 @@ item_map = {
 item_lunch_money = {
     "id": "lunch money",
     "name": "lunch money",
-    "description": "lunch money taken from the poor guy from cell B. Money is always useful"
+    "description": "lunch money taken from the poor guy from cell B. Money is always useful."
 }
 
-item_com_key = {
-    "id": "com key",
-    "name": "computer science key",
-    "description": "A key."
+item_matt_key = {
+    "id": "key",
+    "name": "a key",
+    "description": "Matt Morgans key."
+}
+
+item_flashlight = {
+    "id": "flashlight",
+    "name": "flashlight",
+    "description": "a flashlight, batteries come included!"
 }
