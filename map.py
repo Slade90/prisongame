@@ -15,7 +15,7 @@ room_kirills_office = {
     "name": "Kirills Office",
 
     "description":
-    """You have entered Kirill\'s office. His PC seems to be locked as he is not currently here.\nYou can\'t help but notice the incredible amount of Star Trek merchandise scattered around the room.""",
+    """You have entered Kirill\'s office. His PC seems to be locked as he is not currently here.\nYou can\'t help but notice the incredible amount of Star Trek merchandise scattered around the room,\n especially the SPOCK doll on his desk.""",
     
     "exits": {"south": "Token Hallway"},
 

@@ -210,9 +210,16 @@ def execute_examine(item_id):
 def execute_drop(item_id):
     
     drop = False
+    
+    for item in inventory:
+        if item["id"] == "soap":
+            if current_room == "Showers":
+                print("Nothing seems to happen, phew!")
+
+
 
     for item in inventory:
-        if item["id"] == item_id and item["id"] != "hoover":
+        if item["id"] == item_id and item["id"] != "hoover" and item["id"] != "soap":
             current_room["items"].append(item)
             inventory.remove(item)
             drop = True
@@ -433,15 +440,18 @@ def code_commander():
     print("print(""No one understands me in this place!"")")
     
     print("It looks like you'll have to speak to him to proceed..")
-    correct_input = "print hello"
     welcomed = False
     
     while welcomed == False:
-        user_input = str(input("What do you say? "))
-        user_input = normalise_input(user_input)
-        if "printhello" == correct_input or "print hello" == correct_input:
-            True
+        user_input = input("What do you say? ")
+        correct_input = normalise_input(user_input)
+        correct_input.append("randomrandom")
+        if "printhello" == correct_input[0]:
             welcomed = True
+        elif correct_input[1] != "randomrandom":
+            if "print hello" == correct_input[0] + " " + correct_input[1]:
+                welcomed = True
+                return welcomed
            
         else:
             print("He didn't seem to like that..")
@@ -474,12 +484,30 @@ def win_game():
     if current_room == rooms["Reception"]:
         if item_matt_key in inventory:
             print ("The key unlocks the door and you have escaped the prison!")
+            victory_print()
             sys.exit()
 
     if current_room == rooms["Matts Office"]:
             if item_orange_shirt in inventory:
                 print ("add description here")
+                victory_print()
                 sys.exit()
+
+def victory_print():
+
+    print(" __ ___ _ _ ")
+    print(" \ \ / (_) ___| |_ ___ _ __ _ _| |")
+    print(" \ \ / /| |/ __| __/ _ \| '__| | | | |")
+    print(" \ V / | | (__| || (_) | | | |_| |_|")
+    print(" \_/ |_|\___|\__\___/|_| \__, (_)")
+    print(" |___/ ")
+    print(" Credits: ")
+    print(" Alex Stanton ")
+    print(" Baridi Innocent ")
+    print(" Ken Cabrera ")
+    print(" Cameron Dobby ")
+    print(" Ben Lindon ")
+    print(" Nathan Greenslade ")
     
 def main():
 
