@@ -229,10 +229,12 @@ def print_menu(exits, room_items, inv_items):
     for items in inv_items:
         if items["id"] == "map":
             print("SHOW your map")
+    
+
 
     for items in inv_items:
         if items["id"] == "coffee":
-            print("GIVE your coffee")
+                print("GIVE your coffee")
 
         
     #total_mass = 0
@@ -294,13 +296,21 @@ def execute_show_map(inv_items):
             map_print()
 
 def execute_give(inv_items):
-    coffee()
-    for item in inventory:
-        if item["id"] == "coffee":
-            print("would give coffee")
-        
-    
-
+    give = True
+    has_coffee = coffee()
+    inside_tower = in_watchtower()
+    if inside_tower == True:
+        for item in inventory:
+            if item["id"] == "coffee":
+                inventory.remove(item)
+                give = False
+                return give
+            else:
+                give = True
+            if give == False:
+                print("You cannot give that item.")
+            pass
+            
 
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
@@ -455,7 +465,7 @@ def coffee():
         return has_coffee
     else:
         has_coffee = False
-        return False
+        return has_coffee
 
 def got_map():
     has_map = False
@@ -464,7 +474,7 @@ def got_map():
         return has_map
     else:
         has_map = False
-        return False
+        return has_map
 
 def got_money():
     has_money = False
@@ -473,10 +483,28 @@ def got_money():
         return has_money
     else:
         has_money = False
-        return False
+        return has_money
 
 def got_flashlight():
     has_flashlight = False
+    if item_flashlight in inventory:
+        has_flashlight = True
+        return has_flashlight
+    else:
+        has_flashlight = False
+        return has_flashlight
+
+def in_watchtower():
+    inside_tower = False
+    global current_room
+    if current_room == ["Watch Tower"]:
+        inside_tower = True
+        return inside_tower
+    else:
+        inside_tower = False
+        return inside_tower
+
+
     
     
 # This is the entry point of our program

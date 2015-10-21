@@ -54,7 +54,7 @@ room_toilets = {
     "coffee_description":
     """123""",
 
-    "exits": {"west": "Main cell", "east": "Showers"},
+    "exits": {"west": "Main Cell", "east": "Showers"},
 
     "items": []
 
@@ -69,7 +69,7 @@ room_cell_a = {
     "coffee_description":
     """123""",
 
-    "exits": {"south": "Main cell"},
+    "exits": {"south": "Main Cell"},
 
     "items": []
 
@@ -84,7 +84,7 @@ room_cell_b = {
     "coffee_description":
     """123""",
 
-    "exits": {"south": "Main cell"},
+    "exits": {"south": "Main Cell"},
 
     "items": [item_lunch_money]
 }
@@ -98,7 +98,7 @@ room_cell_c = {
     "coffee_description":
     """123""",
 
-    "exits": {"north": "Main cell"},
+    "exits": {"north": "Main Cell"},
 
     "items": [item_map]
 }
@@ -113,7 +113,7 @@ room_cell_d = {
     "coffee_description":
     """123""",
 
-    "exits": {"north": "Main cell"},
+    "exits": {"north": "Main Cell"},
 
     "items": []
 
@@ -158,7 +158,7 @@ room_token_hallway = {
     "coffee_description":
     """123""",
 
-    "exits": {"northwest": "Matts office", "north": "Staff room", "northeast": "Kirills office", "south": "Visiting", "east": "Library"},
+    "exits": {"northwest": "Matts Office", "north": "Staff Room", "northeast": "Kirills Office", "south": "Visiting", "east": "Library"},
 
     "items": []
 
@@ -173,7 +173,7 @@ room_library = {
     "coffee_description":
     """123""",
 
-    "exits": {"west": "Hallway", "south": "Main cell"},
+    "exits": {"west": "Hallway", "south": "Main Cell"},
 
     "items": []
 
@@ -188,7 +188,7 @@ room_visiting = {
     "coffee_description":
     """123""",
 
-    "exits": {"north": "Hallway", "east": "Main cell", "west": "Reception"},
+    "exits": {"north": "Hallway", "east": "Main Cell", "west": "Reception"},
 
     "items": []
 
@@ -203,7 +203,7 @@ room_sweatshop = {
     "coffee_description":
     """123""",
 
-    "exits": {"south": "Watch tower", "north": "Showers"},
+    "exits": {"south": "Watch Tower", "north": "Showers"},
 
     "items": []
 
@@ -232,7 +232,7 @@ room_yard = {
     "coffee_description":
     """123""", 
 
-    "exits": {"north": "Main cell", "east": "Tower"},
+    "exits": {"north": "Main Cell", "east": "Watch Tower"},
 
     "items": []
 }
@@ -257,16 +257,16 @@ rooms = {
     "Hallway": room_token_hallway,
     "Visiting": room_visiting,
     "Library": room_library,
-    "Watch tower": room_watch_tower,
+    "Watch Tower": room_watch_tower,
     "Cell A": room_cell_a,
     "Cell B": room_cell_b,
     "Cell C": room_cell_c,
     "Cell D": room_cell_d,
     "Toilets": room_toilets,
-    "Staff room": room_staff_room,
-    "Kirills office": room_kirills_office,
-    "Matts office": room_matts_office,
-    "Main cell": room_cell_main,
+    "Staff Room": room_staff_room,
+    "Kirills Office": room_kirills_office,
+    "Matts Office": room_matts_office,
+    "Main Cell": room_cell_main,
     "Reception": room_reception,
     "Sweatshop": room_sweatshop
 
