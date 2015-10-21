@@ -29,8 +29,20 @@ item_matt_key = {
     "description": "Matt Morgans key."
 }
 
-item_flashlight = {
-    "id": "flashlight",
-    "name": "flashlight",
-    "description": "a flashlight, batteries come included!"
+item_torch = {
+    "id": "torch",
+    "name": "torch",
+    "description": "a torch, batteries come included!"
+}
+
+item_hoover = {
+    "id": "hoover",
+    "name": "hoover",
+    "description": ""
+}
+
+item_matts_diary = {
+    "id": "matts diary",
+    "name": "matts diary",
+    "description": "After reading through all the heartache and woe in the Wardens life,\nyou find a to do list:\n1. Check the code of the commander. Check.\n2. Get rid of that awful orange shirt. Check.\n3. BUY SHIRT."
 }

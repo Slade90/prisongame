@@ -8,13 +8,14 @@ import sys
 
 
 
+
 def list_of_items(items):
     
     list_item = ("")
         
     for item in items:
-
-        list_item = list_item + item["name"] + ", "
+        if not(item_hoover) == item:
+            list_item = list_item + item["name"] + ", "
 
     list_item = list_item[:-2]
 
@@ -44,10 +45,14 @@ def print_inventory_items(items):
         print ("You have " + items + ".")
         print ("")
 
-def print_room(room):    
-
+def print_room(room):
 
     has_coffee = coffee()
+
+    has_torch = got_torch()
+
+    
+
     if has_coffee == True:
         if current_room == rooms["Yard"] or current_room == rooms["Visiting"]:
             print()
@@ -57,15 +62,45 @@ def print_room(room):
             print(room["coffee_description"])
             print()
             remove_coffee()
+        else: 
+            print()
+            print(room["name"].upper())
+            print()
+    # Display room description
+            print(room["description"])
+            print()
+    if has_torch == True:
+        if current_room == rooms["Cell D"]:
+            print()
+            print(room["name"].upper())
+            print()
+    # Display room description
+            print(room["torch_description"])
+            print()
+            
+        else:
+            print()
+            print(room["name"].upper())
+            print()
+    # Display room description
+            print(room["description"])
+            print()
     else:
         print()
         print(room["name"].upper())
         print()
     # Display room description
         print(room["description"])
-        print()
+        print()        
+
+    
+
+    if not(item_hoover) in inventory:
+        if current_room == rooms["Sweatshop"]:
+            code_commander()
 
     print_room_items(room)
+
 
 def exit_leads_to(exits, direction):
 
@@ -86,10 +121,16 @@ def print_menu(exits, room_items, inv_items):
         print_exit(direction, exit_leads_to(exits, direction))
 
     for items in room_items:
-        print("TAKE " + items["id"].upper() + " to take a " + items["name"])
+        if not(item_hoover) == items:
+            print("TAKE " + items["id"].upper() + " to take a " + items["name"])
 
     for items in inv_items:
-        print("DROP " + items["id"].upper() + " to drop your " + items["name"])
+        if not(item_hoover) == items:
+            print("DROP " + items["id"].upper() + " to drop your " + items["name"])
+
+    for items in inv_items:
+        if not(item_hoover) == items:
+            print("EXAMINE " + items["id"].upper() + " to look at your " + items["name"])
 
     for items in inv_items:
         if items["id"] == "map":
@@ -148,6 +189,8 @@ def execute_give(inv_items):
 
 def execute_take(item_id):
     global current_room
+    global take
+    take = False
     for item in current_room["items"]:
 
         if item["id"] == "key" and current_room == rooms["Matts Office"]:
@@ -156,13 +199,18 @@ def execute_take(item_id):
             if item["id"] == item_id:
                 current_room["items"].remove(item)
                 inventory.append(item)
-                global take
                 take = True
             else:
                 take = False
-        if take == False:        
-            print("You cannot take that item.")
-        pass
+            if take == False:        
+                print("You cannot take that item.")
+            pass
+
+def execute_examine(item_id):
+
+    for item in inventory:
+        if item["id"] == item_id:
+            print(item["description"])
     
 
 def execute_drop(item_id):
@@ -170,7 +218,7 @@ def execute_drop(item_id):
     drop = False
 
     for item in inventory:
-        if item["id"] == item_id:
+        if item["id"] == item_id and item["id"] != "hoover":
             current_room["items"].append(item)
             inventory.remove(item)
             drop = True
@@ -211,18 +259,12 @@ def execute_command(command):
             execute_show_map(command[1])
         else:
             print("Show what?")
-            
-    elif command[0] == "give":
-        if len(command) > 1:
-            execute_give(command[1])
-        else:
-            print("Give what?")
 
-    elif command[0] == "use":
+    elif command[0] == "examine":
         if len(command) > 1:
-            execute_use(command[1])
+            execute_examine(command[1])
         else:
-            print("Use what?")
+            print("Examine what?")
 
     else:
         print("This makes no sense.")
@@ -256,6 +298,16 @@ def coffee():
     else:
         has_coffee = False
         return has_coffee
+
+def got_torch():
+
+    has_torch = False
+    if item_torch in inventory:
+        has_torch = True
+        return has_torch
+    else:
+        has_torch = False
+        return has_torch
 
 def got_map():
 
@@ -313,7 +365,7 @@ def question_master():
     
     kick = False
     print ("""\"To all intents and purposes,\nthe only way to get the key is to answer these following questions.\"""")
-    question1 = "Lets see, if through my questions, you can get the key?" + "\n" + "Who is Warden Kirill's favourite Star Trek Character? "
+    question1 = "Who is Warden Kirill's favourite Star Trek Character? "
     question2 = "1 down with 4 to go, lets test how much you know.." + "\n" + "Can you tell me what can't be fixed?"
     question3 = "2 down and 3 more, 2 more questions? or out the door.." + "\n" + "What is Matt Ph.D the Guard's favourite coffee? "
     question4 = "3 gone and 2 remain, will these questions drive you insane? " + "\n" + "What is it I needed to remember to do? "
@@ -368,8 +420,12 @@ def question_master():
 
         
         print("You have bested me, here is the key")
+        take = True
         inventory.append(item_matt_key)
         execute_go("south")
+        return take
+        
+    
 
     if kick == True:
         print("You have failed!")
@@ -386,18 +442,20 @@ def code_commander():
     correct_input = "print hello"
     welcomed = False
     
-    while False:
+    while welcomed == False:
         user_input = str(input("What do you say? "))
         user_input = normalise_input(user_input)
-        if user_input == correct_input:
+        if "printhello" == correct_input or "print hello" == correct_input:
             True
             welcomed = True
+           
         else:
             print("He didn't seem to like that..")
             print("Try again: ")
             
     if welcomed == True:
-        inventory.append("Torch")
+        inventory.append(item_hoover)
+        inventory.append(item_torch)
         execute_go("south")
         
 
@@ -409,11 +467,22 @@ def add_coffee():
     if current_room == rooms["Staff Room"]:
         if not(item_coffee) in current_room["items"] and not(item_coffee) in inventory:
             current_room["items"].append(item_coffee)
-            
+
+def add_torch():
+    inventory.append(item_torch)
+
+def win_game():
+    if current_room == rooms["Reception"]:
+        if item_matt_key in inventory:
+            print ("Congratulations, you have escaped the prison!")
+            sys.exit()
+
+
     
 def main():
 
     while True:
+        win_game()
         print_room(current_room)
         print_inventory_items(inventory)
         command = menu(current_room["exits"], current_room["items"], inventory)
