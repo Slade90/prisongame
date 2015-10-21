@@ -6,9 +6,6 @@ from gameparser import *
 from mapitem import map_print
 import sys
 
-
-
-
 def list_of_items(items):
     
     list_item = ("")
@@ -51,9 +48,24 @@ def print_room(room):
 
     has_torch = got_torch()
 
-    
-
-    if has_coffee == True:
+    has_map = got_map()
+    print(has_map)
+    if has_map == True:
+        if current_room == rooms["Main Cell"] or current_room == rooms["Cell C"]:
+            print()
+            print(room["name"].upper())
+            print()
+    # Display room description
+            print(room["map_description"])
+            print()
+        else: 
+            print()
+            print(room["name"].upper())
+            print()
+    # Display room description
+            print(room["description"])
+            print()
+    elif has_coffee == True:
         if current_room == rooms["Yard"] or current_room == rooms["Visiting"]:
             print()
             print(room["name"].upper())
@@ -69,7 +81,7 @@ def print_room(room):
     # Display room description
             print(room["description"])
             print()
-    if has_torch == True:
+    elif has_torch == True:
         if current_room == rooms["Cell D"]:
             print()
             print(room["name"].upper())
@@ -168,23 +180,6 @@ def execute_show_map(inv_items):
     for item in inventory:
         if item["id"] == "map":
             map_print()
-
-def execute_give(inv_items):
-    give = True
-    has_coffee = coffee()
-    inside_tower = in_watchtower()
-    print (inside_tower)
-    if inside_tower == True:
-        for item in inventory:
-            if item["id"] == "coffee":
-                inventory.remove(item)
-                give = False
-                return give
-            else:
-                give = True
-            if give == False:
-                print("You cannot give that item.")
-            pass
             
 
 def execute_take(item_id):
@@ -476,8 +471,6 @@ def win_game():
         if item_matt_key in inventory:
             print ("Congratulations, you have escaped the prison!")
             sys.exit()
-
-
     
 def main():
 

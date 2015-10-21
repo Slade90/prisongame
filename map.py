@@ -80,7 +80,7 @@ room_cell_c = {
     "description":
     """You have entered Cell C. You notice that there is a map on the floor in the corner of your eye.""",
 
-    "description_no_map":
+    "map_description":
     """You have entered cell C. Now that you have taken the map, this room is completely empty.""",
 
     "exits": {"north": "Main Cell"},
@@ -119,7 +119,7 @@ you away and mutters
 I can only drink coffee in the staff room or Kirill will kill me! 
 What a joke...How can I get one?\"""",
    
-    "description_no_guard":
+    "map_description":
     """You have now entered the main cell. 
 This seems to be the hub of the prison where all the cells are connected to one another.
 The guard that was here earlier is no longer here, he must have gone up to the guard tower.""",
