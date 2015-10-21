@@ -64,8 +64,8 @@ def print_room(room):
     # Display room description
             print(room["description"])
             print()
-    elif has_coffee == True:
-        if current_room == rooms["Yard"] or current_room == rooms["Visiting"]:
+    if has_coffee == True:
+        if current_room == rooms["Yard"] or current_room == rooms["Visiting"] or current_room == rooms["Watch Tower"]:
             print()
             print(room["name"].upper())
             print()
@@ -149,9 +149,7 @@ def print_menu(exits, room_items, inv_items):
     
 
 
-    for items in inv_items:
-        if items["id"] == "coffee":
-                print("GIVE your COFFEE to ")
+
 
 
     print("What do you want to do?")
@@ -340,16 +338,6 @@ def got_flashlight():
         has_flashlight = False
         return has_flashlight
 
-def in_watchtower():
-
-    inside_tower = False
-    global current_room
-    if current_room == ["Watch Tower"]:
-        inside_tower = True
-        return inside_tower
-    else:
-        inside_tower = False
-        return inside_tower
 
 def question_master():
     """
@@ -447,20 +435,26 @@ def code_commander():
         correct_input = normalise_input(user_input)
         correct_input.append("randomrandom")
         if "printhello" == correct_input[0]:
+            True
             welcomed = True
+            inventory.append(item_hoover)
+            inventory.append(item_torch)
+            execute_go("south")
         elif correct_input[1] != "randomrandom":
             if "print hello" == correct_input[0] + " " + correct_input[1]:
+                True
                 welcomed = True
-                return welcomed
+                inventory.append(item_hoover)
+                inventory.append(item_torch)
+                execute_go("south")
+
+                
+                
            
         else:
             print("He didn't seem to like that..")
             print("Try again: ")
-            
-    if welcomed == True:
-        inventory.append(item_hoover)
-        inventory.append(item_torch)
-        execute_go("south")
+        
         
 
 
