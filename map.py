@@ -4,7 +4,7 @@ room_matts_office = {
     "name": "Matts Office",
     
     "description": 
-    """You have entered Matt Morgan\'s office. He is sat at his desk trying to look busy. He vaguely acknowledges your presence and says \"To all intents and purposes, the only way to get the key is to answer these following questions.\"""",
+    """You have entered Matt Morgan\'s office.\nHe is sat at his desk trying to look busy, he vaguely acknowledges\nyour presence.""" """and says \"To all intents and purposes,\nthe only way to get the key is to answer these following questions.\"""",
 
     "other_description":
     """ """, 
@@ -54,7 +54,7 @@ room_toilets = {
     "other_description":
     """123""",
 
-    "exits": {"west": "Main cell", "east": "Showers"},
+    "exits": {"west": "Main Cell", "east": "Showers"},
 
     "items": []
 
@@ -69,7 +69,7 @@ room_cell_a = {
     "description_2":
     """You have entered the cell that you woke up in. There is nothing in here that you could use.""",
 
-    "exits": {"south": "Main cell"},
+    "exits": {"south": "Main Cell"},
 
     "items": []
 
@@ -84,7 +84,7 @@ room_cell_b = {
     "other_description":
     """123""",
 
-    "exits": {"south": "Main cell"},
+    "exits": {"south": "Main Cell"},
 
     "items": [item_lunch_money]
 }
@@ -98,7 +98,7 @@ room_cell_c = {
     "description_no_map":
     """You have entered cell C. Now that you have taken the map, this room is completely empty.""",
 
-    "exits": {"north": "Main cell"},
+    "exits": {"north": "Main Cell"},
 
     "items": [item_map]
 }
@@ -113,7 +113,7 @@ room_cell_d = {
     "description_with_torch":
     """You have entered Cell D. The room is completely dark, so you use the torch in your inventory to light up the room which reveals a message on the wall that says \"WE CAN\'T FIX THOSE LIGHTS! THOSE BLOODY LIGHTS!\"""",
 
-    "exits": {"north": "Main cell"},
+    "exits": {"north": "Main Cell"},
 
     "items": []
 
@@ -125,6 +125,9 @@ room_cell_main = {
     "description":
     """You have now entered the main cell. This seems to be the hub of the prison where all the cells are connected to one another. Matt Ph.D. the guard has spotted you, you try to greet him but he ignorantly shrugs you away and mutters \"12 hour shift on the guard tower and I haven\'t even had a coffee, damn it! I can only drink coffee in the staff room or Kirill will kill me! What a joke...How can I get one?\"""",
 
+    
+     
+   
     "description_no_guard":
     """You have now entered the main cell. This seems to be the hub of the prison where all the cells are connected to one another. The guard that was here earlier is no longer here, he must have gone up to the guard tower.""",
 
@@ -158,7 +161,7 @@ room_token_hallway = {
     "other_description":
     """123""",
 
-    "exits": {"northwest": "Matts office", "north": "Staff room", "northeast": "Kirills office", "south": "Visiting", "east": "Library"},
+    "exits": {"northwest": "Matts Office", "north": "Staff Room", "northeast": "Kirills Office", "south": "Visiting", "east": "Library"},
 
     "items": []
 
@@ -185,10 +188,10 @@ room_visiting = {
     "description":
     """You have entered the Visiting room, there are no visitors for you, what a surprise...""",
 
-    "description_with_kirill":
+    "coffee_description":
     """Kirill has spotted you with coffee outside of the staff room. \"You shouldn\'t have that in here! Give it to me now!\" You lose the coffee, better not let him catch you again!""",
 
-    "exits": {"north": "Token Hallway", "east": "Main cell", "west": "Reception"},
+    "exits": {"north": "Token Hallway", "east": "Main Cell", "west": "Reception"},
 
     "items": []
 
@@ -232,7 +235,7 @@ room_yard = {
     "description_with_kirill":
     """Kirill has spotted you with coffee outside of the staff room. \"You shouldn\'t have that in here! Give it to me now!\" You lose the coffee, better not let him catch you again!""", 
 
-    "exits": {"north": "Main cell", "east": "Watch Tower"},
+    "exits": {"north": "Main Cell", "east": "Watch Tower"},
 
     "items": []
 }
@@ -263,10 +266,10 @@ rooms = {
     "Cell C": room_cell_c,
     "Cell D": room_cell_d,
     "Toilets": room_toilets,
-    "Staff room": room_staff_room,
-    "Kirills office": room_kirills_office,
-    "Matts office": room_matts_office,
-    "Main cell": room_cell_main,
+    "Staff Room": room_staff_room,
+    "Kirills Office": room_kirills_office,
+    "Matts Office": room_matts_office,
+    "Main Cell": room_cell_main,
     "Reception": room_reception,
     "Sweatshop": room_sweatshop
 

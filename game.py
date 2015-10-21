@@ -46,6 +46,7 @@ def print_inventory_items(items):
 
 def print_room(room):    
 
+
     has_coffee = coffee()
     if has_coffee == True:
         if current_room == rooms["Yard"] or current_room == rooms["Visiting"]:
@@ -113,7 +114,7 @@ def is_valid_exit(exits, chosen_exit):
 
 def execute_go(direction):
     global current_room
-      
+    
     if direction in current_room["exits"]:
         current_room = move(current_room["exits"], direction)
         return current_room
@@ -311,7 +312,7 @@ def question_master():
     complete4 = False
     
     kick = False
-    
+    print ("""\"To all intents and purposes,\nthe only way to get the key is to answer these following questions.\"""")
     question1 = "Lets see, if through my questions, you can get the key?" + "\n" + "Who is Warden Kirill's favourite Star Trek Character? "
     question2 = "1 down with 4 to go, lets test how much you know.." + "\n" + "Can you tell me what can't be fixed?"
     question3 = "2 down and 3 more, 2 more questions? or out the door.." + "\n" + "What is Matt Ph.D the Guard's favourite coffee? "
