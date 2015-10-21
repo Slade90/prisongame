@@ -14,7 +14,7 @@ item_coffee = {
 item_map = {
     "id": "map",
     "name": "map",
-    "description": "a map of the computer science building."
+    "description": "a map of the prison facility."
 }
 
 item_matt_key = {

@@ -4,7 +4,7 @@ def map_print():
     print('.                                                                              .')
     print('.             ..........       ..........         ..........                   .')
     print('.             . Matts  .       . Staff  .         . Kirills.                   .')
-    print('.             . Office .       . Office .         . Office .                   .')
+    print('.             . Office .       .  Room  .         . Office .                   .')
     print('.             ..........       ..........         ..........                   .')
     print('.                 .                .                .                          .')
     print('.                 .                .                .                          .')
