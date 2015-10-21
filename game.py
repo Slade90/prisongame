@@ -49,62 +49,63 @@ def print_room(room):
     has_torch = got_torch()
 
     has_map = got_map()
+    printed = False
     if has_map == True:
         if current_room == rooms["Main Cell"] or current_room == rooms["Cell C"]:
             print()
             print(room["name"].upper())
             print()
-    # Display room description
             print(room["map_description"])
             print()
+            printed = True
         else: 
             print()
             print(room["name"].upper())
             print()
-    # Display room description
             print(room["description"])
             print()
+            printed = True
     if has_coffee == True:
         if current_room == rooms["Yard"] or current_room == rooms["Visiting"] or current_room == rooms["Watch Tower"]:
             print()
             print(room["name"].upper())
             print()
-    # Display room description
             print(room["coffee_description"])
             print()
             remove_coffee()
+            printed = True
         else: 
             print()
             print(room["name"].upper())
             print()
-    # Display room description
             print(room["description"])
             print()
-    elif has_torch == True:
+            printed = True
+    if has_torch == True:
         if current_room == rooms["Cell D"]:
             print()
             print(room["name"].upper())
             print()
-    # Display room description
             print(room["torch_description"])
             print()
+            printed = True
             
         else:
             print()
             print(room["name"].upper())
             print()
-    # Display room description
             print(room["description"])
             print()
-    else:
+            printed = True
+           
+
+    if printed == False:
         print()
         print(room["name"].upper())
         print()
-    # Display room description
         print(room["description"])
-        print()        
-
-    
+        print()
+           
 
     if not(item_hoover) in inventory:
         if current_room == rooms["Sweatshop"]:
