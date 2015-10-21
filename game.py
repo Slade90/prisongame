@@ -22,7 +22,7 @@ def list_of_items(items):
 def print_room_items(room):
 
     items = list_of_items(room["items"])
-    
+    add_orange_shirt()
     add_coffee()
 
     if items == (""):
@@ -462,6 +462,11 @@ def add_coffee():
         if not(item_coffee) in current_room["items"] and not(item_coffee) in inventory:
             current_room["items"].append(item_coffee)
 
+def add_orange_shirt():
+    if current_room == rooms["Yard"]:
+        if item_matt_key in inventory and not(item_orange_shirt) in inventory:
+            current_room["items"].append(item_orange_shirt)
+
 def add_torch():
     inventory.append(item_torch)
 
@@ -470,6 +475,11 @@ def win_game():
         if item_matt_key in inventory:
             print ("The key unlocks the door and you have escaped the prison!")
             sys.exit()
+
+    if current_room == rooms["Matts Office"]:
+            if item_orange_shirt in inventory:
+                print ("add description here")
+                sys.exit()
     
 def main():
 

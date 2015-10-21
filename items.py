@@ -40,3 +40,9 @@ item_matts_diary = {
     "name": "matts diary",
     "description": "After reading through all the heartache and woe in the Wardens life,\nyou find a to do list:\n1. Check the code of the commander. Check.\n2. Get rid of that awful orange shirt. Check.\n3. BUY SHIRT."
 }
+
+item_orange_shirt = {
+    "id": "shirt",
+    "name": "orange shirt",
+    "description": "this would look wonderful on Matt"
+}
