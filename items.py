@@ -46,3 +46,10 @@ item_orange_shirt = {
     "name": "orange shirt",
     "description": "this would look wonderful on Matt"
 }
+
+
+item_spock = {
+    "id": "spock",
+    "name": "spock",
+    "description": "It's antique!"
+}
