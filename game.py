@@ -468,7 +468,7 @@ def add_torch():
 def win_game():
     if current_room == rooms["Reception"]:
         if item_matt_key in inventory:
-            print ("Congratulations, you have escaped the prison!")
+            print ("The key unlocks the door and you have escaped the prison!")
             sys.exit()
     
 def main():
