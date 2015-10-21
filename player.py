@@ -1,6 +1,6 @@
 from map import rooms
 from items import *
 
-current_room = rooms["Cell A"]
+current_room = rooms["Matts Office"]
 
-inventory = [item_soap, item_matt_key]
+inventory = [item_soap]

@@ -11,7 +11,7 @@ room_matts_office = {
 
     "exits": {"south": "Hallway"},
 
-    "items": []
+    "items": [item_matt_key]
 }
 
 room_kirills_office = {

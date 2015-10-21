@@ -24,6 +24,9 @@ def list_of_items(items):
 def print_room_items(room):
 
     items = list_of_items(room["items"])
+    
+    add_coffee()
+
     if items == (""):
         pass
     else:
@@ -41,17 +44,18 @@ def print_inventory_items(items):
         print ("You have " + items + ".")
         print ("")
 
-def print_room(room):
+def print_room(room):    
 
-    # Display room name
     has_coffee = coffee()
     if has_coffee == True:
-        print()
-        print(room["name"].upper())
-        print()
+        if current_room == rooms["Yard"] or current_room == rooms["Visiting"]:
+            print()
+            print(room["name"].upper())
+            print()
     # Display room description
-        print(room["coffee_description"])
-        print()
+            print(room["coffee_description"])
+            print()
+            remove_coffee()
     else:
         print()
         print(room["name"].upper())
@@ -110,10 +114,7 @@ def is_valid_exit(exits, chosen_exit):
 def execute_go(direction):
     global current_room
       
-    if current_room == rooms["Matts Office"]:
-        question_master()
-    elif direction in current_room["exits"]:
-        
+    if direction in current_room["exits"]:
         current_room = move(current_room["exits"], direction)
         return current_room
     else:
@@ -145,22 +146,22 @@ def execute_give(inv_items):
             
 
 def execute_take(item_id):
-    
+    global current_room
     for item in current_room["items"]:
-        if item["id"] == item_id:
-            current_room["items"].remove(item)
-            inventory.append(item)
-            global take
-            take = True
+
+        if item["id"] == "key" and current_room == rooms["Matts Office"]:
+            question_master()
         else:
-            take = False
-    if take == False:        
-        print("You cannot take that item.")
-    pass
-
-
-
-
+            if item["id"] == item_id:
+                current_room["items"].remove(item)
+                inventory.append(item)
+                global take
+                take = True
+            else:
+                take = False
+        if take == False:        
+            print("You cannot take that item.")
+        pass
     
 
 def execute_drop(item_id):
@@ -311,62 +312,103 @@ def question_master():
     
     kick = False
     
-    question1 = print("Lets see, if through my questions, you can get the key?" + "\n" + "Who is Warden Kirill's favourite Star Trek Character? ")
-    question2 = print("1 down with 4 to go, lets test how much you know.." + "\n" + "Can you tell me what can't be fixed?")
-    question3 = print("2 down and 3 more, 2 more questions? or out the door.." + "\n" + "What is Matt Ph.D the Guard's favourite coffee? ")
-    question4 = print("3 gone and 2 remain, will these questions drive you insane? " + "\n" + "What is it I needed to remember to do? ")
+    question1 = "Lets see, if through my questions, you can get the key?" + "\n" + "Who is Warden Kirill's favourite Star Trek Character? "
+    question2 = "1 down with 4 to go, lets test how much you know.." + "\n" + "Can you tell me what can't be fixed?"
+    question3 = "2 down and 3 more, 2 more questions? or out the door.." + "\n" + "What is Matt Ph.D the Guard's favourite coffee? "
+    question4 = "3 gone and 2 remain, will these questions drive you insane? " + "\n" + "What is it I needed to remember to do? "
     #question5 = print("" + "\n" + "")    
     
-    question1_answer = "spock"
-    question2_answer = "lights"
-    question3_answer = "latte"
-    question4_answer = "buy shirt"
+    question1_answer = ("spock")
+    question2_answer = ("lights")
+    question3_answer = ("latte")
+    question4_answer = ("buy shirt")
     #question5_answer = ""               For later use
     
     if kick == False:
         print(question1) 
         user_input = input(str("what is your answer? ") + "\n")
-        if normalise_input(user_input) == question1_answer:
+        user_input = normalise_input(user_input)
+        if user_input[0] == "spock":
             complete1 = True
         else:
-           kick = True
-        
+            kick = True
         #not sure if elif's are better here, they'd make it cleaner at least - Dobby        
         
-        if complete1 == True:
-            print(question2)
-            user_input = input(str("what is your answer? ") + "\n")
-            if normalise_input(user_input) == question2_answer:
-                complete2 = True
-            else:
-                kick = True
+    if complete1 == True:
+        print(question2)
+        user_input = input(str("what is your answer? ") + "\n")
+        user_input = normalise_input(user_input)    
+        if user_input[0] == question2_answer:
+            complete2 = True
+        else:
+            kick = True
         
                 
-        if complete2 == True:
-            print(question3)
-            user_input = input(str("what is your answer? ") + "\n")
-            if normalise_input(user_input) == question3_answer:
-                complete3 = True
-            else:
-                kick=True
+    if complete2 == True:
+        print(question3)
+        user_input = input(str("what is your answer? ") + "\n")
+        user_input = normalise_input(user_input)
+        if user_input[0] == question3_answer:
+            complete3 = True
+        else:
+            kick=True
         
                 
-        if complete3 == True:
-            print(question4)
-            user_input = input(str("what is your answer?") + "\n")
-            if normalise_input(user_input) == question4_answer:
-                complete4 = True
-            else:
-                kick = True
+    if complete3 == True:
+        print(question4)
+        user_input = input(str("what is your answer?") + "\n")
+        user_input = normalise_input(user_input)
+        if (user_input[0] + " " + user_input[1]) == question4_answer:
+            complete4 = True
+        else:
+            kick = True
                 
-        if complete4 == True:
-            print("You have bested me, here is the key")
+    if complete4 == True:
+
+        
+        print("You have bested me, here is the key")
+        inventory.append(item_matt_key)
+        execute_go("south")
+
+    if kick == True:
+        print("You have failed!")
+        execute_go("south")
     
     #We need to make sure that execute_go("east") is a thing
-    #If so we might be able to make this work for other stuff 
+    #If so we might be able to make this work for other stuff
 
 
+def code_commander():
+    print("print(""No one understands me in this place!"")")
     
+    print("It looks like you'll have to speak to him to proceed..")
+    correct_input = "print hello"
+    welcomed = False
+    
+    while False:
+        user_input = str(input("What do you say? "))
+        user_input = normalise_input(user_input)
+        if user_input == correct_input:
+            True
+            welcomed = True
+        else:
+            print("He didn't seem to like that..")
+            print("Try again: ")
+            
+    if welcomed == True:
+        inventory.append("Torch")
+        execute_go("south")
+        
+
+
+def remove_coffee():
+    inventory.remove(item_coffee)
+
+def add_coffee():
+    if current_room == rooms["Staff Room"]:
+        if not(item_coffee) in current_room["items"] and not(item_coffee) in inventory:
+            current_room["items"].append(item_coffee)
+            
     
 def main():
 

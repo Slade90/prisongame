@@ -25,7 +25,7 @@ item_lunch_money = {
 
 item_matt_key = {
     "id": "key",
-    "name": "a key",
+    "name": "key",
     "description": "Matt Morgans key."
 }
 
