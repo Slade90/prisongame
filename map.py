@@ -71,7 +71,7 @@ room_cell_b = {
 
     "exits": {"south": "Main Cell"},
 
-    "items": [item_lunch_money]
+    "items": []
 }
 
 room_cell_c = {
@@ -181,7 +181,7 @@ room_library = {
 
     "exits": {"west": "Token Hallway", "south": "Main Cell"},
 
-    "items": []
+    "items": [item_matts_diary]
 
 }
 

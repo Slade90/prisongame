@@ -49,7 +49,6 @@ def print_room(room):
     has_torch = got_torch()
 
     has_map = got_map()
-    print(has_map)
     if has_map == True:
         if current_room == rooms["Main Cell"] or current_room == rooms["Cell C"]:
             print()

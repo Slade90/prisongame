@@ -17,12 +17,6 @@ item_map = {
     "description": "a map of the computer science building."
 }
 
-item_lunch_money = {
-    "id": "lunch money",
-    "name": "lunch money",
-    "description": "lunch money taken from the poor guy from cell B. Money is always useful."
-}
-
 item_matt_key = {
     "id": "key",
     "name": "key",
@@ -42,7 +36,7 @@ item_hoover = {
 }
 
 item_matts_diary = {
-    "id": "matts diary",
+    "id": "diary",
     "name": "matts diary",
     "description": "After reading through all the heartache and woe in the Wardens life,\nyou find a to do list:\n1. Check the code of the commander. Check.\n2. Get rid of that awful orange shirt. Check.\n3. BUY SHIRT."
 }
