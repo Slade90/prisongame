@@ -49,8 +49,8 @@ def print_room(room):
     has_torch = got_torch()
 
     has_map = got_map()
-    printed = False
-    if has_map == True:
+    printed = False 
+    if has_map == True and printed == False:
         if current_room == rooms["Main Cell"] or current_room == rooms["Cell C"]:
             print()
             print(room["name"].upper())
@@ -58,14 +58,8 @@ def print_room(room):
             print(room["map_description"])
             print()
             printed = True
-        else: 
-            print()
-            print(room["name"].upper())
-            print()
-            print(room["description"])
-            print()
-            printed = True
-    if has_coffee == True:
+       
+    if has_coffee == True and printed == False:
         if current_room == rooms["Yard"] or current_room == rooms["Visiting"] or current_room == rooms["Watch Tower"]:
             print()
             print(room["name"].upper())
@@ -74,14 +68,8 @@ def print_room(room):
             print()
             remove_coffee()
             printed = True
-        else: 
-            print()
-            print(room["name"].upper())
-            print()
-            print(room["description"])
-            print()
-            printed = True
-    if has_torch == True:
+        
+    if has_torch == True and printed == False:
         if current_room == rooms["Cell D"]:
             print()
             print(room["name"].upper())
@@ -90,13 +78,7 @@ def print_room(room):
             print()
             printed = True
             
-        else:
-            print()
-            print(room["name"].upper())
-            print()
-            print(room["description"])
-            print()
-            printed = True
+       
            
 
     if printed == False:
@@ -356,9 +338,9 @@ def question_master():
     kick = False
     print ("""\"To all intents and purposes,\nthe only way to get the key is to answer these following questions.\"""")
     question1 = "Who is Warden Kirill's favourite Star Trek Character? "
-    question2 = "1 down with 4 to go, lets test how much you know.." + "\n" + "Can you tell me what can't be fixed?"
-    question3 = "2 down and 3 more, 2 more questions? or out the door.." + "\n" + "What is Matt Ph.D the Guard's favourite coffee? "
-    question4 = "3 gone and 2 remain, will these questions drive you insane? " + "\n" + "What is it I needed to remember to do? "
+    question2 = "1 down with 3 to go, lets test how much you know.." + "\n" + "Can you tell me what can't be fixed?"
+    question3 = "2 down and 2 more, 2 more questions? or out the door.." + "\n" + "What is Matt Ph.D the Guard's favourite coffee? "
+    question4 = "3 gone and 1 remain, will these questions drive you insane? " + "\n" + "What is it I needed to remember to do? "
     #question5 = print("" + "\n" + "")    
     
     question1_answer = ("spock")
@@ -401,7 +383,10 @@ def question_master():
         print(question4)
         user_input = input(str("what is your answer?") + "\n")
         user_input = normalise_input(user_input)
-        if (user_input[0] + " " + user_input[1]) == question4_answer:
+        user_input.append("randomrandom")
+        if user_input[1] == "randomrandom":
+            kick = True
+        elif (user_input[0] + " " + user_input[1]) == question4_answer:
             complete4 = True
         else:
             kick = True
@@ -438,18 +423,16 @@ def code_commander():
         if "printhello" == correct_input[0]:
             True
             welcomed = True
+            print("print(""Finally, someone can speak to me!"")")
             inventory.append(item_hoover)
             inventory.append(item_torch)
-            execute_go("south")
         elif correct_input[1] != "randomrandom":
             if "print hello" == correct_input[0] + " " + correct_input[1]:
                 True
                 welcomed = True
+                print("print(""Finally, someone can speak to me!"")")
                 inventory.append(item_hoover)
                 inventory.append(item_torch)
-                execute_go("south")
-
-                
                 
            
         else:
